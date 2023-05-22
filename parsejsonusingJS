@@ -1,0 +1,29 @@
+const MEMBER_INITIAL_VALUE = {
+  type: '',
+  dateOfBirth_: '',
+  seekingCoverage_: true,
+  relationshipToPrimary: ''
+};
+//this is the function that updated the inisital json
+const updateInitialValue = (type, relationshipToPrimary) => ({
+  type,
+  relationshipToPrimary,
+  [`dateOfBirth_${type}`]: MEMBER_INITIAL_VALUE.dateOfBirth_,
+  [`seekingCoverage_${type}`]: MEMBER_INITIAL_VALUE.seekingCoverage_
+});
+//use the below to test it 
+let updatedValue = updateInitialValue('applicant', 'SELF');
+updatedValue = updateInitialValue('spouse', 'DEPENDANT');
+
+//this is the expected result
+{
+  type: 'applicant',
+  dateOfBirth_applicant: '',
+  seekingCoverage_applicant: true
+  relationshipToPrimary: 'SELF'
+}; 
+{
+  type: 'spouse',
+  dateOfBirth_spouse: '',
+  seekingCoverage_spouse: true
+  re
